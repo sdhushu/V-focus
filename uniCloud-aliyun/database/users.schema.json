@@ -1,0 +1,25 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"username": {
+			"title":"用户名",
+			"bsonType":"string",
+			"maxLength":15
+		},
+		"password": {
+			"title":"密码",
+			"bsonType":"string",
+			"minLength":6
+		}
+	}
+}
