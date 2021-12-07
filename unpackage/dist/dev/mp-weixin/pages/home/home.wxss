@@ -1,0 +1,77 @@
+
+.V_home {
+		width: 100vw;
+		height: 100vh;
+		background-color: #E1E1E1;
+		overflow-x: hidden;
+		overflow-y: auto;
+}
+.V_home_header {
+		padding: 40rpx;
+		height: 8vh;
+		width: 100vw;
+}
+.left_time {
+		position: absolute;
+}
+.day_font {
+		font-size: 80rpx;
+}
+.year_font {
+		font-size: 35rpx;
+		position: absolute;
+		left: 120%;
+		top: 50%;
+		color: gray;
+}
+.month_font {
+		font-size: 30rpx;
+		position: absolute;
+		left: 120%;
+		top: 10%;
+		color: gray;
+}
+.right_time {
+		font-size: 80rpx;
+		position: absolute;
+		right: 6%;
+}
+.card_radio {
+/* 		position: absolute;
+		right: 15%; */
+		padding-top: 50rpx; 
+		/* margin-top: 45rpx; */
+		margin-right: 10rpx;
+		-webkit-transform: translate(30%);
+		        transform: translate(30%);
+}
+.card_text {
+		/* position: absolute; */
+		margin-left: 15px;
+		/* margin-top: 45rpx; */
+		padding-top: 50rpx;
+		font-size: 10px;
+}
+.wrap {
+		height: 160px;
+		overflow-x: hidden;
+		overflow-y: auto;
+}
+.card_input {
+		margin-left: 16px;
+		margin-top: 50rpx;
+}
+.card_title {
+		width: auto;
+		padding: 20rpx 30rpx;
+		background-color: skyblue;
+		color: #FFFFFF;
+		position: absolute;
+		border-radius: 20rpx;
+		left: 18%;
+		font-size: 35rpx;
+		-webkit-transform: translateY(-50%);
+		        transform: translateY(-50%);
+}
+	
+

@@ -1,10 +1,13 @@
 {
   "pages": [
-    "pages/login/login"
+    "pages/home/home",
+    "pages/login/login",
+    "component/todoCard/todoCard"
   ],
   "subPackages": [],
   "window": {
     "navigationStyle": "custom"
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap98.json"
 }

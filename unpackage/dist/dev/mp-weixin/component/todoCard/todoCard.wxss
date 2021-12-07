@@ -1,0 +1,17 @@
+
+.todo-Wrap {
+	width: 75%;
+	position: relative;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	        transform: translateX(-50%);
+}
+.simple-todoCard {
+	width: 100%;
+	height: 300rpx;
+	padding: 20rpx;
+	border-radius: 30rpx;
+	margin-bottom: 30rpx;
+	box-shadow: 1px 2px 5px #888888;
+}
+

@@ -1,0 +1,35 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成",
+			"bsonType":"string"
+		},
+		"user": {
+			"title": "卡片对应的用户",
+			"bsonType": "string"
+		},
+		"id":{
+			"bsonType":"string"
+		},
+		"data": {
+			"title": "任务内容及状态",
+			"bsonType": "array"
+		},
+		"title": {
+			"title": "卡片标题",
+			"bsonType": "string"
+		},
+		"titleColor": {
+			"title": "卡片颜色",
+			"bsonType": "string"
+		}
+	}
+}

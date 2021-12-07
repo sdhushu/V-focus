@@ -1,7 +1,9 @@
 {
   "usingComponents": {
+    "u-text": "/uni_modules/uview-ui/components/u-text/u-text",
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
     "u--input": "/uni_modules/uview-ui/components/u--input/u--input",
     "u-line": "/uni_modules/uview-ui/components/u-line/u-line",
-    "u-button": "/uni_modules/uview-ui/components/u-button/u-button"
+    "u-toast": "/uni_modules/uview-ui/components/u-toast/u-toast"
   }
 }

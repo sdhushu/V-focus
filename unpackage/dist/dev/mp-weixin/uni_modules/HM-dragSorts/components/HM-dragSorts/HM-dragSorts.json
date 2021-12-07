@@ -1,0 +1,7 @@
+{
+  "componentGenerics": {
+    "scoped-slots-rowContent": true
+  },
+  "component": true,
+  "usingComponents": {}
+}

@@ -1,16 +1,20 @@
 <template>
 	<view class="login_page">
 		<!-- 登录注册按钮 -->
-		<u-button shape="circle" size="large" class="allButton">
-			<u-text v-if="loginStatus == 'loginText'" class="loginButtons headButton loginText" text="登录" color="#fff"
-				@click="loginTextHandle('loginButtons','registerText',true)"></u-text>
-			<u-button v-if="loginStatus == 'loginButtons'" text="登录" shape="circle" size="large"
-				class="loginButtons headButton" @click=""></u-button>
-			<u-text v-if="registerStatus == 'registerText'" class="registerButton headButton registerText" text="注册"
-				color="#fff" @click="loginTextHandle('loginText','registerButtons',true)"></u-text>
-			<u-button v-if="registerStatus == 'registerButtons'" text="注册" shape="circle" size="large"
-				class="registerButton headButton" @click=""></u-button>
-		</u-button>
+		<view class="allButton" >
+			<!-- <u-button shape="circle" size="large" > -->
+				<u-text v-if="loginStatus == 'loginText'" class="loginButtons headButton loginText" text="登录" color="#fff"
+					@click="loginTextHandle('loginButtons','registerText',true)"></u-text>
+				<view class="loginButtons headButton">
+					<u-button v-if="loginStatus == 'loginButtons'" text="登录" shape="circle"  @click=""></u-button>
+				</view>
+				<u-text v-if="registerStatus == 'registerText'" class="registerButton headButton registerText" text="注册"
+					color="#fff" @click="loginTextHandle('loginText','registerButtons',true)"></u-text>
+				<view class="registerButton headButton">
+					<u-button v-if="registerStatus == 'registerButtons'" text="注册" shape="circle" @click=""></u-button>
+				</view>
+			<!-- </u-button> -->
+		</view>
 		<!-- 卡片 -->
 		<view class="card" v-if="loginStatus == 'loginButtons'">
 			<!-- 登陆账号 -->
@@ -38,8 +42,11 @@
 		</view>
 
 		<!-- 登录按钮 -->
-		<u-button :text="loginStatus == 'loginButtons' ? '登录':'注册'" size="large" class="loginButton" type="primary"
-			@click="login"></u-button>
+		<view class="loginButton">
+			<u-button :text="loginStatus == 'loginButtons' ? '登录':'注册'" size="large"  type="primary"
+				@click="login"></u-button>
+		</view>
+
 		<!-- 错误信息提示 -->
 		<u-toast ref="uToast"></u-toast>
 
@@ -82,7 +89,12 @@
 			}
 		},
 		onLoad() {
-
+			uni.getStorage({
+			    key: 'username',
+			    success: function (res) {
+			        console.log(res.data,2432432);
+			    }
+			})
 		},
 		methods: {
 			change(e) {
@@ -118,9 +130,22 @@
 					this.password = ''
 					return this.showToast(this.toast[2])
 				}
-				// 提示登陆成功
-				this.toast[3].message = `${this.value} 欢迎登录!`
-				return this.showToast(this.toast[3])
+				try {
+				    uni.setStorageSync('username', this.value);
+					// 跳转页面
+					uni.redirectTo({
+						url:'../home/home'
+					})
+					// 提示登陆成功
+					this.toast[3].message = `${this.value} 欢迎登录!`
+					return this.showToast(this.toast[3])
+				} catch (e) {
+				    // error
+					// uni.showToast({
+					// 	title:'用户存储失败'
+					// })
+				}
+
 				
 			},
 			// 请求数据库 注册数据
@@ -155,12 +180,10 @@
 			// 注册验证
 			regisetr_validate() {
 				let neg = new RegExp('(?!^([0-9]+|[a-zA-Z]+|[!#*_]+)$)^[a-zA-Z0-9!#*_]{6,16}$').test(this.password)
-				console.log(this.value, this.password, neg)
+				console.log(this.value === '', this.password === '', neg)
 				this.value === '' || this.password === '' || neg === false ?
 					//  预验证失败 提示错误
-					this.showToast(this.toast[0]) :
-					console.log('预验证成功')
-					this.db_Register()
+					this.showToast(this.toast[0]) :this.db_Register()
 			},
 			// 点击注册 或者登录
 			login() {
@@ -177,9 +200,9 @@
 		height: 100vh;
 		width: 100vw;
 		background-color: #e8e8e8;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		/* display: flex; */
+		/* justify-content: center; */
+		/* align-items: center; */
 	}
 
 	.card {
@@ -187,6 +210,10 @@
 		height: 30%;
 		background-color: #FFFFFF;
 		border-radius: 30rpx;
+		position: absolute;
+		left: 15%;
+		top: 35%;
+		/* transform: translate(-50% -50%); */
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -196,42 +223,49 @@
 	}
 
 	.loginButton {
-		flex: none;
 		position: absolute;
-		bottom: 30%;
 		width: 40%;
+		bottom: 30%;
+		left: 30%;
 	}
 
 	.allButton {
-		width: 50%;
+		width: 40%;
 		background-color: gray;
 		position: absolute;
-		top: 20%;
-		opacity: 0.3;
+		top: 27%;
+		height: 6%;
+		border-radius: 30px;
+		left: 30%;
+		/* opacity: 0.3; */
 
 	}
 
 	.headButton {
-		z-index: 2000;
+		/* z-index: 2000; */
 		position: absolute;
 		width: 50%;
-		height: 85%;
+		height: 15%;
 	}
 
 	.loginButtons {
-		left: 15rpx;
+		top: 10%;
+		left: 5%;
 	}
 
 	.loginText {
+		top: 25%;
 		left: 18%;
 	}
 
 	.registerButton {
+		top: 10%;
 		right: 15rpx;
 		/* opacity: 0.5; */
 	}
 
 	.registerText {
+		top: 25%;
 		left: 65%;
 	}
 </style>
